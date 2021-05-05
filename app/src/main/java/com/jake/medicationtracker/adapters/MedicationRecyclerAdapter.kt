@@ -12,6 +12,7 @@ import com.jake.medicationtracker.MedicationsActivity
 import com.jake.medicationtracker.R
 import com.jake.medicationtracker.pojo.Medication
 
+// Code adapted from: https://www.youtube.com/watch?v=ZIU-SO77RpQ
 class MedicationRecyclerAdapter(private val context: Context, var medications: ArrayList<Medication>) :
         RecyclerView.Adapter<MedicationRecyclerAdapter.MedicationsViewHolder>() {
 

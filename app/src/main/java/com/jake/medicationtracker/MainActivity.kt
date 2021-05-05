@@ -13,7 +13,9 @@ import com.jake.medicationtracker.fragments.AppointmentsFragment
 import com.jake.medicationtracker.fragments.MedicationsFragment
 import com.jake.medicationtracker.fragments.NotesFragment
 
+// Code adapted from: https://www.youtube.com/watch?v=AL_1UDa9l3U
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -53,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Code adapted from: https://www.youtube.com/watch?v=nl-dheVpt8o
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "medicationTrackerChannel"

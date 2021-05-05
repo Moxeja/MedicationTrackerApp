@@ -12,6 +12,7 @@ import com.jake.medicationtracker.AppointmentsActivity
 import com.jake.medicationtracker.R
 import com.jake.medicationtracker.pojo.Appointment
 
+// Code adapted from: https://www.youtube.com/watch?v=ZIU-SO77RpQ
 class AppointmentRecyclerAdapter(private val context: Context, var appointments: ArrayList<Appointment>) :
         RecyclerView.Adapter<AppointmentRecyclerAdapter.AppointmentsViewHolder>() {
 

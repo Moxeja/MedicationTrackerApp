@@ -10,6 +10,7 @@ import java.security.SecureRandom
 
 class AppointmentReminderBroadcast : BroadcastReceiver() {
 
+    // Code adapted from: https://www.youtube.com/watch?v=nl-dheVpt8o
     override fun onReceive(context: Context, intent: Intent) {
         // Retrieve extra information from intent
         val drName = intent.extras?.getString("drName")!!

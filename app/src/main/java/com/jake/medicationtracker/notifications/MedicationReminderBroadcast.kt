@@ -90,6 +90,7 @@ class MedicationReminderBroadcast : BroadcastReceiver() {
         return calendar.timeInMillis
     }
 
+    // Code adapted from: https://www.youtube.com/watch?v=nl-dheVpt8o
     private fun sendNotification(context: Context, title: String, description: String) {
         // Create the notification builder
         val builder = NotificationCompat.Builder(context, "medicationTracker")

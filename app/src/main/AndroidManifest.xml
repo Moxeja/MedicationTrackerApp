@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
 
+        <!-- Code adapted from: https://www.youtube.com/watch?v=nl-dheVpt8o -->
         <receiver android:name=".notifications.AppointmentReminderBroadcast" />
         <receiver android:name=".notifications.MedicationReminderBroadcast" />
     </application>

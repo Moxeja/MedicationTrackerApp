@@ -14,6 +14,7 @@ import com.jake.medicationtracker.R
 import com.jake.medicationtracker.adapters.AppointmentRecyclerAdapter
 import com.jake.medicationtracker.models.AppointmentsModel
 
+// Code adapted from: https://www.youtube.com/watch?v=HtwDXRWjMcU
 class AppointmentsFragment : Fragment(R.layout.appointments_fragment) {
 
     private lateinit var adapter: AppointmentRecyclerAdapter

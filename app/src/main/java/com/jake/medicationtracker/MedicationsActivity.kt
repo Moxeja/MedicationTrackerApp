@@ -34,7 +34,7 @@ class MedicationsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_medications)
 
-        // Setup toolbar
+        // Setup toolbar, code adapted from: https://stackoverflow.com/a/34997702
         val toolbar = findViewById<MaterialToolbar>(R.id.MedicationsToolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -102,6 +102,7 @@ class MedicationsActivity : AppCompatActivity() {
                 etDose.text.isNullOrBlank() || etStock.text.isNullOrBlank())
     }
 
+    // Code adapted from: https://www.youtube.com/watch?v=nl-dheVpt8o
     private fun setNotification(requestCode: Int) {
         // Get time
         val calendar = Calendar.getInstance().apply {
@@ -128,6 +129,7 @@ class MedicationsActivity : AppCompatActivity() {
                 calendar.timeInMillis, pendingIntent)
     }
 
+    // Code adapted from: https://stackoverflow.com/a/11682008
     private fun deleteNotification(requestCode: Int) {
         // Create intent and pending intent
         val intent = Intent(this, MedicationReminderBroadcast::class.java)
@@ -149,6 +151,7 @@ class MedicationsActivity : AppCompatActivity() {
         tpMedTime.minute = minute
     }
 
+    // Code adapted from: https://stackoverflow.com/a/35649007
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // Inflate menu and add delete button if necessary
         return if (id >= 0) {
@@ -159,6 +162,7 @@ class MedicationsActivity : AppCompatActivity() {
         }
     }
 
+    // Code adapted from: https://stackoverflow.com/a/34997702
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             // If the user clicked the back arrow

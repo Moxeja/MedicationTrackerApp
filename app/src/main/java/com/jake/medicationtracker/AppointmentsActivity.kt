@@ -31,7 +31,7 @@ class AppointmentsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_appointments)
 
-        // Setup toolbar
+        // Setup toolbar, code adapted from: https://stackoverflow.com/a/34997702
         val toolbar = findViewById<MaterialToolbar>(R.id.AppointmentToolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -96,6 +96,7 @@ class AppointmentsActivity : AppCompatActivity() {
         return (etName.text.isNullOrBlank() || etPlace.text.isNullOrBlank())
     }
 
+    // Code adapted from: https://www.youtube.com/watch?v=nl-dheVpt8o
     private fun setNotification(requestCode: Int) {
         // Create broadcast intent with extra data
         val intent = Intent(this, AppointmentReminderBroadcast::class.java)
@@ -111,6 +112,7 @@ class AppointmentsActivity : AppCompatActivity() {
                 getDateTimeMillisMinusHour(), pendingIntent)
     }
 
+    // Code adapted from: https://stackoverflow.com/a/11682008
     private fun deleteNotification(requestCode: Int) {
         // Create intent and pending intent
         val intent = Intent(this, AppointmentReminderBroadcast::class.java)
@@ -123,6 +125,7 @@ class AppointmentsActivity : AppCompatActivity() {
         alarmManager.cancel(pendingIntent)
     }
 
+    // Code adapted from: https://stackoverflow.com/a/35649007
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // Inflate menu and add delete button if necessary
         return if (id >= 0) {
@@ -133,6 +136,7 @@ class AppointmentsActivity : AppCompatActivity() {
         }
     }
 
+    // Code adapted from: https://stackoverflow.com/a/34997702
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             // If the user clicked the back arrow

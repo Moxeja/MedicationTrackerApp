@@ -14,6 +14,7 @@ import com.jake.medicationtracker.R
 import com.jake.medicationtracker.adapters.MedicationRecyclerAdapter
 import com.jake.medicationtracker.models.MedicationsModel
 
+// Code adapted from: https://www.youtube.com/watch?v=HtwDXRWjMcU
 class MedicationsFragment : Fragment(R.layout.medications_fragment) {
 
     private lateinit var adapter: MedicationRecyclerAdapter

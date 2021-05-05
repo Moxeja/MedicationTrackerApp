@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/miMedications"
+        android:title="Medications"
+        android:icon="@drawable/ic_medications" />
+
+    <item
+        android:id="@+id/miAppointments"
+        android:title="Appointments"
+        android:icon="@drawable/ic_appointments" />
+
+    <item
+        android:id="@+id/miNotes"
+        android:title="Notes"
+        android:icon="@drawable/ic_notes" />
+</menu>

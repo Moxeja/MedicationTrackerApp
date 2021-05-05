@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/appointment_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        app:cardCornerRadius="3dp"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rlCard"
+            android:focusable="true"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <TextView
+                android:id="@+id/tvDrName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dr_name"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:layout_marginStart="5dp" />
+
+            <TextView
+                android:id="@+id/tvDateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDrName"
+                android:text="@string/date_time"
+                android:textSize="15sp"
+                android:layout_marginStart="5dp" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDrName"
+                android:layout_toEndOf="@id/tvDateLabel"
+                android:text="@string/_02_05_2021_11_58am"
+                android:textSize="15sp"
+                android:layout_marginStart="5dp" />
+
+            <TextView
+                android:id="@+id/tvSurgeryLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDateLabel"
+                android:text="@string/surgery"
+                android:textSize="15sp"
+                android:layout_marginStart="5dp" />
+
+            <TextView
+                android:id="@+id/tvSurgery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDate"
+                android:layout_toEndOf="@id/tvSurgeryLabel"
+                android:text="@string/east_quay_medical_centre"
+                android:textSize="15sp"
+                android:layout_marginStart="5dp" />
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>

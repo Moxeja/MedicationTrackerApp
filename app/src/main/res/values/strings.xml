@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Medication Tracker</string>
+    <string name="date_time">Date/Time:</string>
+    <string name="dr_name">Dr Name</string>
+    <string name="surgery">Surgery:</string>
+    <string name="east_quay_medical_centre">East Quay Medical Centre</string>
+    <string name="_02_05_2021_11_58am">02/05/2021 11:58AM</string>
+    <string name="add_appointment_instructions">Please enter the appropriate appointment details below</string>
+    <string name="surgery_name">Surgery Name</string>
+    <string name="name_of_professional">Name of Professional</string>
+    <string name="date_prompt">Please select the date of appointment</string>
+    <string name="time_prompt">Please select the time of appointment</string>
+    <string name="add_appointment_button">Add Appointment</string>
+    <string name="add_medication_prompt">Please choose what time to be notified daily</string>
+    <string name="please_enter_the_appropriate_medication_details_below">Please enter the appropriate medication details below</string>
+    <string name="name_of_medication">Name of Medication</string>
+    <string name="dose_size">Dose size</string>
+    <string name="current_stock">Current Stock</string>
+    <string name="add_medication">Add Medication</string>
+    <string name="save_changes">Save Changes</string>
+</resources>

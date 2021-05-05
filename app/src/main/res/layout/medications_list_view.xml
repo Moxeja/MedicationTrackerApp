@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/appointment_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        app:cardCornerRadius="3dp"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rlCardMeds"
+            android:focusable="true"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <TextView
+                android:id="@+id/tvMedicationName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paracetamol"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:layout_marginStart="5dp" />
+
+            <TextView
+                android:id="@+id/tvTimeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvMedicationName"
+                android:text="Daily time to take medication:"
+                android:textSize="15sp"
+                android:layout_marginStart="5dp" />
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvMedicationName"
+                android:layout_toEndOf="@id/tvTimeLabel"
+                android:text="10:00"
+                android:textSize="15sp"
+                android:layout_marginStart="5dp" />
+
+            <TextView
+                android:id="@+id/tvStockLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="160dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:text="Doses Left:"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tvStock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tvStockLabel"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:text="8"
+                android:textStyle="bold"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/tvDoseSizeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTimeLabel"
+                android:text="Dose size:"
+                android:textSize="15sp"
+                android:layout_marginStart="5dp" />
+
+            <TextView
+                android:id="@+id/tvDoseSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTime"
+                android:layout_toEndOf="@id/tvDoseSizeLabel"
+                android:text="1"
+                android:textSize="15sp"
+                android:layout_marginStart="5dp" />
+
+            <TextView
+                android:id="@+id/tvDoseLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTime"
+                android:layout_toEndOf="@id/tvDoseSize"
+                android:text="Tablet(s)"
+                android:textSize="15sp"
+                android:layout_marginStart="5dp" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>

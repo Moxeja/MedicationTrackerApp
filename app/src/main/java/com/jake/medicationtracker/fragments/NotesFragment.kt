@@ -16,7 +16,7 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
         // Load notepad data from database and retrieve reference to the edit text view
         NotesModel(context!!).use {
             val view = inflater.inflate(R.layout.notes_fragment, container, false)
-            etNotes = view.findViewById<EditText>(R.id.etNotes)
+            etNotes = view.findViewById(R.id.etNotes)
             etNotes.setText(it.loadNotes())
 
             return view

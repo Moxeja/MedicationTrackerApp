@@ -66,28 +66,60 @@
                 android:textAlignment="center"
                 android:textSize="16sp" />
 
-            <DatePicker
-                android:id="@+id/dpDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:calendarViewShown="false"
-                android:datePickerMode="spinner" />
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/time_prompt"
-                android:textAlignment="center"
-                android:textSize="16sp" />
+                android:orientation="horizontal">
 
-            <TimePicker
-                android:id="@+id/tpTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:timePickerMode="spinner" />
+                <EditText
+                    android:id="@+id/etAppointmentTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="@string/time_hint"
+                    android:focusable="false"
+                    android:inputType="none"
+                    android:gravity="center"
+                    android:importantForAutofill="no" />
+
+                <EditText
+                    android:id="@+id/etAppointmentDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="@string/date_hint"
+                    android:focusable="false"
+                    android:inputType="none"
+                    android:gravity="center"
+                    android:importantForAutofill="no" />
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnAppointmentSelectTime"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="@string/select_time_prompt"
+                android:layout_weight="1"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="5dp" />
+
+            <Button
+                android:id="@+id/btnAppointmentSelectDate"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="@string/select_date_prompt"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="5dp" />
+
+        </LinearLayout>
 
             <Button
                 android:id="@+id/btnAddAppointment"
@@ -95,6 +127,8 @@
                 android:layout_height="60dp"
                 android:text="@string/add_appointment_button"
                 android:layout_marginBottom="10dp" />
+
         </LinearLayout>
+
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

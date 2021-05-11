@@ -30,7 +30,7 @@ class MedicationReminderBroadcast : BroadcastReceiver() {
         if (newStock > 0) {
             // Send medication remainder notification
             sendNotification(context, "Medication Due",
-                    "$medicationName ${doseSize.toString()} tablet(s), $newStock tablet(s) remaining.")
+                    "$medicationName $doseSize tablet(s), $newStock tablet(s) remaining.")
         } else {
             // Send out of stock notification
             sendNotification(context, "Out of Medication",

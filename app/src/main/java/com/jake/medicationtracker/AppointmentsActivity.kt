@@ -1,14 +1,20 @@
 package com.jake.medicationtracker
 
+import android.annotation.SuppressLint
 import android.app.AlarmManager
+import android.app.DatePickerDialog
 import android.app.PendingIntent
+import android.app.TimePickerDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.MaterialToolbar
@@ -17,12 +23,13 @@ import com.jake.medicationtracker.notifications.AppointmentReminderBroadcast
 import java.text.SimpleDateFormat
 import java.util.*
 
+@SuppressLint("SimpleDateFormat")
 class AppointmentsActivity : AppCompatActivity() {
     // UI elements of interest
     private lateinit var etName: EditText
     private lateinit var etPlace: EditText
-    private lateinit var dpDate: DatePicker
-    private lateinit var tpTime: TimePicker
+    private lateinit var etDate: EditText
+    private lateinit var etTime: EditText
 
     // Used to update an existing appointment entry
     private var id = -1
@@ -40,8 +47,15 @@ class AppointmentsActivity : AppCompatActivity() {
         // Retrieve references to UI views
         etName = findViewById(R.id.etDrName)
         etPlace = findViewById(R.id.etLocation)
-        dpDate = findViewById(R.id.dpDate)
-        tpTime = findViewById(R.id.tpTime)
+        etDate = findViewById(R.id.etAppointmentDate)
+        etTime = findViewById(R.id.etAppointmentTime)
+
+        // Make date and time readouts readonly
+        etTime.inputType = InputType.TYPE_NULL
+        etDate.inputType = InputType.TYPE_NULL
+
+        // Setup date and time picker dialogs
+        setupDateTimePickers()
 
         // Check if in edit mode
         id = intent.getIntExtra("id", -1)
@@ -55,8 +69,9 @@ class AppointmentsActivity : AppCompatActivity() {
             supportActionBar?.title = "Edit Appointment"
             etName.setText(drName)
             etPlace.setText(surgery)
+            etTime.setText(dateTime[1])
+            etDate.setText(dateTime[0])
             findViewById<Button>(R.id.btnAddAppointment).text = getString(R.string.save_changes)
-            setupPickerDefaults(dateTime)
 
             // Setup edit button callback
             findViewById<Button>(R.id.btnAddAppointment).setOnClickListener {
@@ -91,9 +106,68 @@ class AppointmentsActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupDateTimePickers() {
+        // Setup date picker event handler
+        val dateSet = DatePickerDialog.OnDateSetListener { _, year, month, day ->
+            // Get current calendar and set retrieved date
+            val calendar = Calendar.getInstance()
+            val formatter = SimpleDateFormat("yyyy-MM-dd")
+            calendar.set(Calendar.YEAR, year)
+            calendar.set(Calendar.MONTH, month)
+            calendar.set(Calendar.DAY_OF_MONTH, day)
+
+            // Set text box to selected date
+            etDate.setText(formatter.format(calendar.time))
+        }
+
+        // Setup time picker event handler
+        val timeSet = TimePickerDialog.OnTimeSetListener { _, hour, minute ->
+            // Get current calendar and set retrieved time
+            val calendar = Calendar.getInstance()
+            val formatter = SimpleDateFormat("HH:mm")
+            calendar.set(Calendar.HOUR_OF_DAY, hour)
+            calendar.set(Calendar.MINUTE, minute)
+
+            // Set text box to selected time
+            etTime.setText(formatter.format(calendar.time))
+        }
+
+        findViewById<Button>(R.id.btnAppointmentSelectTime).setOnClickListener {
+            val calendar = Calendar.getInstance()
+
+            // Check if a time has already been selected, set picker default to it
+            if (!etTime.text.isNullOrBlank()) {
+                val timeSplit = etTime.text.split(":")
+                calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeSplit[0]))
+                calendar.set(Calendar.MINUTE, Integer.parseInt(timeSplit[1]))
+            }
+
+            // Show the time picker dialog prompt
+            TimePickerDialog(this, timeSet,
+                calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true).show()
+        }
+
+        findViewById<Button>(R.id.btnAppointmentSelectDate).setOnClickListener {
+            val calendar = Calendar.getInstance()
+
+            // Check if a date has already been selected, set picker default to it
+            if (!etDate.text.isNullOrBlank()) {
+                val dateSplit = etDate.text.split("-")
+                calendar.set(Calendar.YEAR, Integer.parseInt(dateSplit[0]))
+                calendar.set(Calendar.MONTH, Integer.parseInt(dateSplit[1]) - 1)
+                calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateSplit[2]))
+            }
+
+            // Show the date picker dialog prompt
+            DatePickerDialog(this, dateSet, calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show()
+        }
+    }
+
     private fun checkInvalidInputs(): Boolean {
         // Check to see if any input boxes are empty or null
-        return (etName.text.isNullOrBlank() || etPlace.text.isNullOrBlank())
+        return (etName.text.isNullOrBlank() || etPlace.text.isNullOrBlank()
+                || etTime.text.isNullOrBlank() || etDate.text.isNullOrBlank())
     }
 
     // Code adapted from: https://www.youtube.com/watch?v=nl-dheVpt8o
@@ -171,37 +245,23 @@ class AppointmentsActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupPickerDefaults(dateTime: List<String>) {
-        // Setup date picker
-        val date = dateTime[0].split("-")
-        val year = Integer.parseInt(date[0])
-        val month = Integer.parseInt(date[1]) - 1 // Zero index
-        val day = Integer.parseInt(date[2])
-        dpDate.init(year, month, day, null)
-
-        // Setup time picker
-        val time = dateTime[1].split(":")
-        val hour = Integer.parseInt(time[0])
-        val minute = Integer.parseInt(time[1])
-        tpTime.hour = hour
-        tpTime.minute = minute
-    }
-
     private fun getDateTimeMillisMinusHour(): Long {
         // Get date information
-        val day = dpDate.dayOfMonth
-        val month = dpDate.month
-        val year = dpDate.year
+        val dateSplit = etDate.text.split("-")
+        val day = Integer.parseInt(dateSplit[2])
+        val month = Integer.parseInt(dateSplit[1])
+        val year = Integer.parseInt(dateSplit[0])
 
         // Get time information
-        val hour = tpTime.hour
-        val minute = tpTime.minute
+        val timeSplit = etTime.text.split(":")
+        val hour = Integer.parseInt(timeSplit[0])
+        val minute = Integer.parseInt(timeSplit[1])
 
         // Construct date/time string
         val calendar = GregorianCalendar()
         calendar.clear()
         calendar.set(Calendar.YEAR, year)
-        calendar.set(Calendar.MONTH, month)
+        calendar.set(Calendar.MONTH, month - 1)
         calendar.set(Calendar.DAY_OF_MONTH, day)
         calendar.set(Calendar.HOUR_OF_DAY, hour - 1)
         calendar.set(Calendar.MINUTE, minute)
@@ -211,19 +271,21 @@ class AppointmentsActivity : AppCompatActivity() {
 
     private fun getDateTime(): String {
         // Get date information
-        val day = dpDate.dayOfMonth
-        val month = dpDate.month
-        val year = dpDate.year
+        val dateSplit = etDate.text.split("-")
+        val day = Integer.parseInt(dateSplit[2])
+        val month = Integer.parseInt(dateSplit[1])
+        val year = Integer.parseInt(dateSplit[0])
 
         // Get time information
-        val hour = tpTime.hour
-        val minute = tpTime.minute
+        val timeSplit = etTime.text.split(":")
+        val hour = Integer.parseInt(timeSplit[0])
+        val minute = Integer.parseInt(timeSplit[1])
 
         // Construct date/time string
         val calendar = GregorianCalendar()
         calendar.clear()
         calendar.set(Calendar.YEAR, year)
-        calendar.set(Calendar.MONTH, month)
+        calendar.set(Calendar.MONTH, month - 1)
         calendar.set(Calendar.DAY_OF_MONTH, day)
         calendar.set(Calendar.HOUR_OF_DAY, hour)
         calendar.set(Calendar.MINUTE, minute)

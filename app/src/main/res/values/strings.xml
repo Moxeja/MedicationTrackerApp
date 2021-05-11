@@ -4,12 +4,11 @@
     <string name="dr_name">Dr Name</string>
     <string name="surgery">Surgery:</string>
     <string name="east_quay_medical_centre">East Quay Medical Centre</string>
-    <string name="_02_05_2021_11_58am">02/05/2021 11:58AM</string>
+    <string name="date_time_prompt">2021-05-02 13:58</string>
     <string name="add_appointment_instructions">Please enter the appropriate appointment details below</string>
     <string name="surgery_name">Surgery Name</string>
     <string name="name_of_professional">Name of Professional</string>
-    <string name="date_prompt">Please select the date of appointment</string>
-    <string name="time_prompt">Please select the time of appointment</string>
+    <string name="date_prompt">Please select the date and time of appointment</string>
     <string name="add_appointment_button">Add Appointment</string>
     <string name="add_medication_prompt">Please choose what time to be notified daily</string>
     <string name="please_enter_the_appropriate_medication_details_below">Please enter the appropriate medication details below</string>
@@ -18,4 +17,18 @@
     <string name="current_stock">Current Stock</string>
     <string name="add_medication">Add Medication</string>
     <string name="save_changes">Save Changes</string>
+    <string name="select_date_prompt">Select Date</string>
+    <string name="select_time_prompt">Select Time</string>
+    <string name="date_hint">2021-01-14</string>
+    <string name="time_hint">13:00</string>
+    <string name="add_appointment_content_description">Add an appointment button</string>
+    <string name="add_medication_content_description">Add a medication button</string>
+    <string name="notes_hint">type any notes here</string>
+    <string name="medication_name_placeholder">Paracetamol</string>
+    <string name="daily_time_to_take_medication">Daily time to take medication:</string>
+    <string name="doses_left">Doses Left:</string>
+    <string name="doses_left_prompt">8</string>
+    <string name="dose_size_prompt">Dose size:</string>
+    <string name="medication_dose_amount_template">1</string>
+    <string name="dose_type_prompt">Tablet(s)</string>
 </resources>

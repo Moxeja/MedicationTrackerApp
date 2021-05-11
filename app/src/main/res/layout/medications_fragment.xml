@@ -26,5 +26,7 @@
         android:layout_margin="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_create_entry" />
+        app:srcCompat="@drawable/ic_create_entry"
+        android:focusable="true"
+        android:contentDescription="@string/add_medication_content_description" />
 </androidx.constraintlayout.widget.ConstraintLayout>

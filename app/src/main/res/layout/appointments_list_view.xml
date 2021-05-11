@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvDrName"
                 android:layout_toEndOf="@id/tvDateLabel"
-                android:text="@string/_02_05_2021_11_58am"
+                android:text="@string/date_time_prompt"
                 android:textSize="15sp"
                 android:layout_marginStart="5dp" />
 
